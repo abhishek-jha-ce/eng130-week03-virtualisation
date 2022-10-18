@@ -109,3 +109,51 @@ sudo apt-get update      # It downloads the package information from all configu
 sudo apt-get upgrade -y  # It install available upgrades of all packages currently installed on the system. y flag is for confirmation, if required.
 ```
 - We have a working VM with internet connectivity, we can now download and install `nginx` in our VM.
+- Inside the Virtual Machine we can use the command `sudo apt-get install nginx -y`to install `nginx`.
+- We can check the status by running `sudo systemctl status nginx` command.
+```
+vagrant@ubuntu-xenial:~$ sudo systemctl status nginx
+● nginx.service - A high performance web server and a reverse proxy server
+   Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: en
+   Active: active (running) since Tue 2022-10-18 17:10:08 UTC; 7min ago
+ Main PID: 12424 (nginx)
+   CGroup: /system.slice/nginx.service
+           ├─12424 nginx: master process /usr/sbin/nginx -g daemon on; master_pr
+           ├─12426 nginx: worker process
+           └─12427 nginx: worker process
+
+Oct 18 17:10:08 ubuntu-xenial systemd[1]: Starting A high performance web server
+Oct 18 17:10:08 ubuntu-xenial systemd[1]: Started A high performance web server
+lines 1-11/11 (END)
+```
+- We can use the same `sudo systemctl` command for other tasks.
+```
+sudo systemctl start nginx    # Start nginx
+sudo systemctl restart nginx  # Restart nginx
+sudo systemctl stop nginx     # Start nginx
+```
+
+- We don't have a browser available in our VM. To see the `nginx` in the browser, add the following line of code to the `Vagrantfile`:
+```
+config.vm.network "private_network", ip: "192.168.10.100"
+```
+The **updated** `Vagrantfile` will look like this:
+```
+$ cat Vagrantfile
+# To Create a Virtual Machine using Vagrant, We need
+# Virtual box
+# Vagrant - $vagrant --version - to test it
+# ruby - dev-kit $ruby --version - to test it
+
+# creating a VM with Linux OS using Ubuntu 16.04LTS
+
+Vagrant.configure("2") do |config|
+
+ config.vm.box = "ubuntu/xenial64"
+# Creating a Virtual Machine using Ubuntu
+
+# Adding a private network for nginx, and specifying its ip
+ config.vm.network "private_network", ip: "192.168.10.100"
+
+end
+```
