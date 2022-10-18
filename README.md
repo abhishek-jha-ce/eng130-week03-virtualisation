@@ -4,8 +4,9 @@ To make use of virtuallisation, we need the following tools installed in our loc
 - SSH
 - Git
 - Bash
-- Ruby
+- Ruby - dev-kit is required for Vagrant
 - VirtualBox
+- Vagrant
 
 Check the *installation.MD* file to see how to install **Ruby**, **Vagrant**, and **Virtual Box**.
 
@@ -23,3 +24,6 @@ $ nano Vagrantfile
 
 It will create the file and open nano editor, where we can edit the file.
 ```
+**Note**: To Save in `nano editor` use `CTRL + O` and to exit use `CTRL + X`
+
+- 
