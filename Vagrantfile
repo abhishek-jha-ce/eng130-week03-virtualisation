@@ -10,5 +10,7 @@ Vagrant.configure("2") do |config|
  config.vm.box = "ubuntu/xenial64"
 # Creating a Virtual Machine using Ubuntu 
 
+# Adding a private network for nginx, and specifying its ip
+ config.vm.network "private_network", ip: "192.168.10.100"
 
 end
