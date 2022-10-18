@@ -176,3 +176,7 @@ restart the localhost
 $vagrant up       # To run the Virtual Machine
 $vagrant ssh      # To login back to the Virtual Machine
 ```
+
+- Once we have the `nginx` up and running, we can check it from the browser by entering `192.168.10.100`. This is the `ip address` we specified for `nginx` in the `Vagrantfile`
+
+![image](https://user-images.githubusercontent.com/110366380/196511954-cdd28fda-bd5c-4b65-9c76-b8e8308505b4.png)
