@@ -157,3 +157,22 @@ Vagrant.configure("2") do |config|
 
 end
 ```
+- Now we have made the changes to the file, we have to exit out of our VM and reload the vagrant from our localhost, the same location the `Vagrantfile` is stored.
+- To exit from the VM, we use the `exit` command.
+```
+$vagrant reload   # To relaod the VM
+$vagrant ssh      # To login back to the Virtual Machine
+```
+- If the above command doesn't work. We can try
+```
+$vagrant destroy  # To kill the current vagrant process
+$vagrant up       # To run the Virtual Machine
+$vagrant ssh      # To login back to the Virtual Machine
+```
+- If this also doesn't work, We have to manually delete the `.vagrant` folder using `rm -rf .vagrant`
+```
+$rm -rf .vagrant  # To manually delete the .vagrant folder (forcefully)
+restart the localhost
+$vagrant up       # To run the Virtual Machine
+$vagrant ssh      # To login back to the Virtual Machine
+```
