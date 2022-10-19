@@ -83,3 +83,18 @@ Vagrant.configure("2") do |config|
  
 end
 ```
+
+- Now we need to destroy any running `vagrant` instances using: `vagrant destroy`
+
+- We need to start a new instance of `vagrant` using: `vagrant up`
+
+- Login to the Virtual Machine using SSH: `vagrant ssh`
+
+- Once logged inside the Virtual Machine: Navigate to app directory `cd app`
+
+- Enter `npm start` and it will start the server.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/110366380/196752741-a6795e63-bb63-4baa-bc38-15567f361d85.png">
+</p>   
+                                                                                                                   
