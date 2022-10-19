@@ -210,8 +210,8 @@ $vagrant ssh      # To login back to the Virtual Machine
 
 - In `Vagrantfile` add the following line of code:
 ```
- config.vm.synced_folder "app/", "/srv/app", create: true
- config.vm.synced_folder "environment/", "/srv/environment", create: true 
+ config.vm.synced_folder "./app", "/home/vagrant/app", create: true
+ config.vm.synced_folder "./environment", "/home/vagrant/environment", create: true 
 ```
 - The first parameter is the **relative path** of the location of the folder in the **local host**.
 - The Second parameter is the **absolute path** of the location of the folder in the **Virtual Machine**.
@@ -229,12 +229,19 @@ $vagrant ssh      # To login back to the Virtual Machine
 vagrant@ubuntu-xenial:~$ cd /srv   # We have specified it to be inside /srv
 
 vagrant@ubuntu-xenial:/srv$ ll
-total 16
-drwxr-xr-x  5 root    root    4096 Oct 19 10:40 ./
-drwxr-xr-x 24 root    root    4096 Oct 19 10:40 ../
-drwxrwxrwx  1 vagrant vagrant 4096 Oct 19 10:11 app/
-drwxrwxrwx  1 vagrant vagrant    0 Oct 19 10:09 environment/
-drwxr-xr-x  2 root    root    4096 Oct 19 10:27 files/
+vagrant@ubuntu-xenial:~$ ll
+total 40
+drwxr-xr-x 6 vagrant vagrant 4096 Oct 19 12:34 ./
+drwxr-xr-x 4 root    root    4096 Oct 18 17:59 ../
+drwxrwxrwx 1 vagrant vagrant 4096 Oct 19 10:11 app/
+-rw------- 1 vagrant vagrant  591 Oct 19 12:33 .bash_history
+-rw-r--r-- 1 vagrant vagrant  220 Oct  1  2021 .bash_logout
+-rw-r--r-- 1 vagrant vagrant 3771 Oct  1  2021 .bashrc
+drwx------ 2 vagrant vagrant 4096 Oct 18 17:59 .cache/
+drwxrwxrwx 1 vagrant vagrant    0 Oct 19 10:09 environment/
+-rw-r--r-- 1 vagrant vagrant  655 Oct  1  2021 .profile
+-rwxr-xr-x 1 root    root     205 Oct 19 09:43 provision.sh*
+drwx------ 2 vagrant vagrant 4096 Oct 18 17:59 .ssh/
 ```
 
 We can see the both `app` and `environment` folder can be accessed from inside the Virtual Machine.
