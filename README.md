@@ -204,3 +204,19 @@ $vagrant ssh      # To login back to the Virtual Machine
 - Once we have the `nginx` up and running, we can check it from the browser by entering `192.168.10.100`. This is the `ip address` we specified for `nginx` in the `Vagrantfile`
 
 ![image](https://user-images.githubusercontent.com/110366380/196511954-cdd28fda-bd5c-4b65-9c76-b8e8308505b4.png)
+
+## Syncing file from Localhost to Virtual Machine
+- Exit out of the Virtual Machine if inside Virtual Machine by typing `exit`.
+
+- In `Vagrantfile` add the following line of code:
+```
+ config.vm.synced_folder "app/", "/srv/app", create: true
+ config.vm.synced_folder "environment/", "/srv/environment", create: true 
+```
+- The first parameter is the **relative path** of the location of the folder in the **local host**.
+- The Second parameter is the **absolute path** of the location of the folder in the **Virtual Machine**.
+- We add an option **create:boolean**. If it is true, the host path will be created if it does not exist. Default is false. 
+ 
+ **Note**: Make sure to save the `vagrantfile`
+ 
+ 
