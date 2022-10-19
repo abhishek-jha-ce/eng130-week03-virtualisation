@@ -1,5 +1,19 @@
 # Virtualisation
 
+Virtualization is the process of running a virtual instance of a computer system in a layer abstracted from the actual hardware.
+
+- It refers to running multiple operating systems on a computer system simultaneously.
+- For the applications running on top of the virtualized machine, it appears as if they are on their own dedicated machine.
+
+
+## Virtual Machine 
+
+A virtual machine is the emulated equivalent of a computer system that runs on top of another system.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/110366380/196637448-12fd6f1b-2f0d-4bb3-9295-caa853c8259e.png">
+</p>
+
 To make use of virtuallisation, we need the following tools installed in our localhost.
 - SSH
 - Git
@@ -11,6 +25,16 @@ To make use of virtuallisation, we need the following tools installed in our loc
 Check the *installation.MD* file to see how to install **Ruby**, **Vagrant**, and **Virtual Box**.
 
 ## Setting up the Development Environment using "Vagrant - Virtual Box"
+
+### What is a development environment?
+
+- Dev environments are virtual machines running either in the local data center, in the cloud or a hybrid combination of these. We can use these machines for software development instead of our local machine.
+- The local machine works as a frontend. It runs only a thin client that is connected to a dev environment. 
+- The dev environment works as a backend.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/110366380/196638477-86988ed9-7134-4d84-8118-55bbb4be69d8.png">
+</p>
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/110366380/196476593-f0cd1530-5d65-4e22-93f8-dc77499ecc6a.png">
