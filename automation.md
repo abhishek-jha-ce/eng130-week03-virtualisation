@@ -84,6 +84,8 @@ Vagrant.configure("2") do |config|
 end
 ```
 
+## Running the server
+
 - Now we need to destroy any running `vagrant` instances using: `vagrant destroy`
 
 - We need to start a new instance of `vagrant` using: `vagrant up`
