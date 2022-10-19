@@ -53,3 +53,33 @@ sudo npm install
 
 ## Modifying the `Vagrantfile`
 
+- Add the following code to the `Vagrantfile`
+```
+# Calling the provision file from the Vagrant file
+ config.vm.provision "shell", path: "provision.sh"
+```
+- The `Vagrantfile` should be like this:
+
+```
+# creating a VM with Linux OS using Ubuntu 16.04LTS
+
+Vagrant.configure("2") do |config|
+
+ config.vm.box = "ubuntu/xenial64"
+# Creating a Virtual Machine using Ubuntu 
+
+# Adding a private network for nginx, and specifying its ip
+ config.vm.network "private_network", ip: "192.168.10.100"
+
+# Calling the provision file from the Vagrant file
+ config.vm.provision "shell", path: "provision.sh"
+  
+# The 1st parameter is the relative path of the location of the folder in the local host
+# the 2nd parameter is the absolute path of the location of the folder in the virtual machine
+
+ config.vm.synced_folder "./app", "/home/vagrant/app", create: true
+ config.vm.synced_folder "./environment", "/home/vagrant/environment", create: true 
+
+ 
+end
+```
