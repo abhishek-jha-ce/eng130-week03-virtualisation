@@ -52,6 +52,7 @@ The Pipe symbol `|` is use to combine two or more commands. The output of the fi
 The `grep` command is used to search text and string in a file. For e.g. `grep string filename` or  `grep 'word' filename`
 
 The `sort` command is used to sort a file, arranging the records in a particular order
+```
 
 - How to create/run a process in the background & foreground, create/run a process in both area
 ```
