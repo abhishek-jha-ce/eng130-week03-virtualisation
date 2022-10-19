@@ -219,4 +219,22 @@ $vagrant ssh      # To login back to the Virtual Machine
  
  **Note**: Make sure to save the `vagrantfile`
  
- 
+ - Reload `vagrant` using `$ vagrant reload`
+ - Login to the Virtual Machine using `$ vagrant ssh`
+ - We should now be inside the VM `vagrant@ubuntu-xenial:~$ `
+
+### To check if file is available inside the Virtual Machine
+
+```
+vagrant@ubuntu-xenial:~$ cd /srv   # We have specified it to be inside /srv
+
+vagrant@ubuntu-xenial:/srv$ ll
+total 16
+drwxr-xr-x  5 root    root    4096 Oct 19 10:40 ./
+drwxr-xr-x 24 root    root    4096 Oct 19 10:40 ../
+drwxrwxrwx  1 vagrant vagrant 4096 Oct 19 10:11 app/
+drwxrwxrwx  1 vagrant vagrant    0 Oct 19 10:09 environment/
+drwxr-xr-x  2 root    root    4096 Oct 19 10:27 files/
+```
+
+We can see the both `app` and `environment` folder can be accessed from inside the Virtual Machine.
