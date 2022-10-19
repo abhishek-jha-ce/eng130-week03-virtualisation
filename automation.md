@@ -1,6 +1,8 @@
 # Automating the tasks
 
-## Creating `provision.sh` file in the local host
+## Setup provisioning in `Vagrantfile` to automate all the installations
+
+### Creating `provision.sh` file in the local host
 
 - Include the `shebang` at the top of the file
 ```
@@ -51,7 +53,7 @@ cd /home/vagrant/app
 sudo npm install
 ```
 
-## Modifying the `Vagrantfile`
+### Modifying the `Vagrantfile`
 
 - Add the following code to the `Vagrantfile`
 ```
@@ -84,7 +86,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-## Running the server
+### Running the server
 
 - Now we need to destroy any running `vagrant` instances using: `vagrant destroy`
 
