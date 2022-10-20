@@ -190,7 +190,7 @@ mongodb://192.168.10.150:27017/posts
 </p>
 
 - If we see this page, that means the `database` is successfully connected to the `app`. We can't see the content yet. To get the contents:
-- Stop the currently running App, and type `node seeds/seed.js`
+- Stop the currently running App, and type `node seeds/seed.js` on the same terminal (same location).
 - We should now see the content of the database if we refresh the browser with the following url: `http://192.168.10.100:3000/posts`
     
 <p align="center">
