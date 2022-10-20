@@ -168,16 +168,19 @@ sudo systemctl enable mongod
 
 ## Setting up the environment variable
 
-**Step 10**: Go back to the app machine, and navigate to the app.js location
+**Step 10**: We need to set up the environment variable so that the app can connect to the database. In the app VM, navigate to the app.js location
 
 - If the app is running, stop it using `CTRL + Z`
 - Create an environment variable called `DB_HOST=mongodb://192.168.10.150:27017/posts`
-- To check, if it is set up properly `printenv DB_HOST`
+- We can persist the environment variable in `.bashrc` file if needed.
+- To check, if it is set up properly use `printenv DB_HOST`
 
 ```
 vagrant@ubuntu-bionic:~/app$ printenv DB_HOST
 mongodb://192.168.10.150:27017/posts
 ```
+
+## Checking the Connection between app and database
 
 - Run `npm start`
 - Restart the app and open a browser, enter the following URL: `http://192.168.10.100:3000/posts`
