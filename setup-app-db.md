@@ -1,4 +1,4 @@
-# Setting up 2 Separate Virtual Machine 
+# Setting up 2 Separate Virtual Machine `app` & `db` and connecting them.
 
 Pre-requisite: If any previous instance of **Virtual Machine** is running, destroy it using `vagrant destroy`.
 
@@ -123,57 +123,76 @@ sudo apt-get install -y mongodb-org=3.2.20 mongodb-org-server=3.2.20 mongodb-org
 **Step 7**: After installation is complete, check the status of the database.
 
 ```
-sudo systemctl status mongodb
-` It might show Active: inactive (dead)1  # First time of running
+sudo systemctl status mongod
+
+# It might show Active: inactive (dead)1  # First time of running
 ```
 
-sudo systemctl start mongodb
-sudo systemctl status mongodb
-sudo systemctl restart mongodb
-sudo systemctl enable mongodb
-sudo systemctl status mongodb
+- Now Follow the following step by step:
+```
+sudo systemctl start mongod
+sudo systemctl status mongod
+sudo systemctl enable mongod
+```
 
-- Now change the mongod.conf
-- navigate to etc folder `cd etc`
-`sudo nano mongod.conf`
+## Changing the configuration
 
-Got to 
+**Step 8**: Change the `mongod.conf` file. It's inside the `etc` folder.
+
+```
+sudo nano etc/mongod.conf
+```
+
+- change the network interfaces
+```
 # network interfaces
 net:
  port: 27017
- bindIp: 127.0.0.1 - Change it to 0.0.0.0 which means allow access to everyone.
+ bindIp: 127.0.0.1 
  
- check its done properly
- $ cat mongod.conf
- 
- It will show:
- 
+# Change it to 0.0.0.0 which means allow access to everyone.
+
+# network interfaces
+net:
  port: 27017
- bindIp: 0.0.0.0
+ bindIp: 0.0.0.0 
+```
+
+ - Use cat to check if its changed to `0.0.0.0`. `$ cat nano etc/mongod.conf` 
  
- after changing the configuration
-restart mongodb
-status enable
+**Step 9**: Restart mongo db.
+```
+sudo systemctl restart mongod
+sudo systemctl enable mongod
+```
 
+## Setting up the environment variable
 
-## Go back to the app machine
-navigate to the app.js location
+**Step 10**: Go back to the app machine, and navigate to the app.js location
 
-create an env variable called DB_HOST=mongodb://192.168.10.150:27017/posts
+- If the app is running, stop it using `CTRL + Z`
+- Create an environment variable called `DB_HOST=mongodb://192.168.10.150:27017/posts`
+- To check, if it is set up properly `printenv DB_HOST`
 
-
-printenv DB_HOST
 ```
 vagrant@ubuntu-bionic:~/app$ printenv DB_HOST
 mongodb://192.168.10.150:27017/posts
 ```
 
-Now, if restart the app and open a browser, enter the following URL: http://192.168.10.100:3000/posts
+- Run `npm start`
+- Restart the app and open a browser, enter the following URL: `http://192.168.10.100:3000/posts`
 
-![image](https://user-images.githubusercontent.com/110366380/196987908-daef1908-476b-46f0-9dad-b03ae2fd57c6.png)
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/110366380/196987908-daef1908-476b-46f0-9dad-b03ae2fd57c6.png"
+</p>
 
-If we see this page, that means the `database` is successfully connected to the `app`.
-
-In the app virtual machine inside the app folder
-node seeds/seed.js
+- If we see this page, that means the `database` is successfully connected to the `app`. We can't see the content yet. To get the contents:
+- Stop the currently running App, and type `node seeds/seed.js`
+- We should now see the content of the database if we refresh the browser with the following url: `http://192.168.10.100:3000/posts`
+    
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/110366380/196987908-daef1908-476b-46f0-9dad-b03ae2fd57c6.png"
+</p>
+ 
+    
 
