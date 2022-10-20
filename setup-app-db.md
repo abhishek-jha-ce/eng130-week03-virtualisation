@@ -194,5 +194,4 @@ mongodb://192.168.10.150:27017/posts
     <img src="https://user-images.githubusercontent.com/110366380/196987908-daef1908-476b-46f0-9dad-b03ae2fd57c6.png"
 </p>
  
-    
-
+**Note**: If reverse proxy is steup in `nginx`, we don't need to specify the port number `3000`.   
