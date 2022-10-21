@@ -209,9 +209,9 @@ Database Seeded
 - We should now see the content of the database if we refresh the browser with the following url: `http://192.168.10.100:3000/posts`
     
 <p align="center">
-    <img src="https://user-images.githubusercontent.com/110366380/196987908-daef1908-476b-46f0-9dad-b03ae2fd57c6.png"
+    <img src="https://user-images.githubusercontent.com/110366380/197177133-76732e49-6003-4359-8411-21b7141a55b7.png"
 </p>
- 
+
 ### Potential Blocker:
 - Since we are stopping and restarting the app many times, we might still have the process running in the background.
 - It won't allow us to run on `port: 3000` as it is already used.
