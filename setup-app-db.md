@@ -1,6 +1,9 @@
 # Setting up 2 Separate Virtual Machine `app` & `db` and connecting them.
 
-Pre-requisite: If any previous instance of **Virtual Machine** is running, destroy it using `vagrant destroy`.
+###Pre-requisite: 
+- app folder - It contains the working app with all the files and its dependencies in `package.json` file.
+- environment folder - It contains the test files for the environment.
+- If any previous instance of **Virtual Machine** is running, destroy it using `vagrant destroy`.
 
 **Step 1**: Modify the exiting `Vagrant File`, to create 2 different virtual machine `app` and `db`.
 
@@ -133,6 +136,9 @@ sudo systemctl status mongod
 sudo systemctl start mongod
 sudo systemctl status mongod
 sudo systemctl enable mongod
+
+# If successfully enabled, we will receive the following message in the console.
+Created symlink /etc/systemd/system/multi-user.target.wants/mongod.service -> /lib/systemd/system/mongod.service.
 ```
 
 ## Changing the configuration
@@ -140,7 +146,7 @@ sudo systemctl enable mongod
 **Step 8**: Change the `mongod.conf` file. It's inside the `etc` folder.
 
 ```
-sudo nano etc/mongod.conf
+sudo nano /etc/mongod.conf
 ```
 
 - change the network interfaces
@@ -172,6 +178,9 @@ sudo systemctl enable mongod
 
 - If the app is running, stop it using `CTRL + Z`
 - Create an environment variable called `DB_HOST=mongodb://192.168.10.150:27017/posts`
+```
+$export DB_HOST=mongodb://192.168.10.150:27017/posts
+```
 - We can persist the environment variable in `.bashrc` file if needed.
 - To check, if it is set up properly use `printenv DB_HOST`
 
@@ -190,11 +199,22 @@ mongodb://192.168.10.150:27017/posts
 </p>
 
 - If we see this page, that means the `database` is successfully connected to the `app`. We can't see the content yet. To get the contents:
-- Stop the currently running App, and type `node seeds/seed.js` on the same terminal (same location).
+- Stop the currently running App, and type `node seeds/seed.js` on the same terminal (same location where `app.js` file is located).
+```
+# We should be able to see these message if it works.   
+Database Cleared
+Database Seeded
+```
+- Run `npm start`.
 - We should now see the content of the database if we refresh the browser with the following url: `http://192.168.10.100:3000/posts`
     
 <p align="center">
     <img src="https://user-images.githubusercontent.com/110366380/196987908-daef1908-476b-46f0-9dad-b03ae2fd57c6.png"
 </p>
  
+###Potential Blocker:
+- Since we are stopping and restarting the app many times, we might still have the process running in the background.
+- It won't allow us to run on `port: 3000` as it is already used.
+- In such scenario, we have to list out all the running process using `ps aux`
+- Kill the process, using `kill -9 PID`
 **Note**: If reverse proxy is steup in `nginx`, we don't need to specify the port number `3000`.   
