@@ -1,6 +1,6 @@
 # Setting up 2 Separate Virtual Machine `app` & `db` and connecting them.
 
-###Pre-requisite: 
+### Pre-requisite: 
 - app folder - It contains the working app with all the files and its dependencies in `package.json` file.
 - environment folder - It contains the test files for the environment.
 - If any previous instance of **Virtual Machine** is running, destroy it using `vagrant destroy`.
