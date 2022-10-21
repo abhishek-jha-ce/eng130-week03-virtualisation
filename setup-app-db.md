@@ -212,9 +212,10 @@ Database Seeded
     <img src="https://user-images.githubusercontent.com/110366380/196987908-daef1908-476b-46f0-9dad-b03ae2fd57c6.png"
 </p>
  
-###Potential Blocker:
+### Potential Blocker:
 - Since we are stopping and restarting the app many times, we might still have the process running in the background.
 - It won't allow us to run on `port: 3000` as it is already used.
 - In such scenario, we have to list out all the running process using `ps aux`
 - Kill the process, using `kill -9 PID`
+    
 **Note**: If reverse proxy is steup in `nginx`, we don't need to specify the port number `3000`.   
